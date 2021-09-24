@@ -1,6 +1,7 @@
 import random
 import numpy as np
 import os
+import config
 
 try:
     import torch
@@ -8,7 +9,7 @@ except:
     pass
 
 
-def fix_all_seeds(seed):
+def fix_all_seeds(seed=config.SEED):
     np.random.seed(seed)
     random.seed(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
