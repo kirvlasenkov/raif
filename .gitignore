@@ -44,3 +44,11 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+
+data
+baseline
+
+model*
+
+out.csv
+train.log
