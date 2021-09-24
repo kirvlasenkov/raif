@@ -1,12 +1,3 @@
-import seaborn as sns
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-from scipy import stats
-import matplotlib.style as style
-
-style.use('ggplot')
-
-
 def plotting_3_chart(df, feature):
     '''
 
@@ -14,6 +5,14 @@ def plotting_3_chart(df, feature):
     :param feature: originally there is SalePrice
     :return: plot, which contains hist, probplot and boxplot of corresponding feature
     '''
+
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    import matplotlib.gridspec as gridspec
+    from scipy import stats
+    import matplotlib.style as style
+
+    style.use('ggplot')
 
     fig = plt.figure(constrained_layout=True, figsize=(12, 8))
     grid = gridspec.GridSpec(ncols=3, nrows=3, figure=fig)
