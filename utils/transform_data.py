@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 def bin_column(column, bins):
     ans = np.array([len(bins)] * column.shape[0])
     k = len(bins)
@@ -23,6 +26,10 @@ def transform(df):
     reg_dict = dict(zip(regions, range(len(regions))))
     df['region'] = [reg_dict[r] for r in df['region']]
     df['street'] = [s if type(s) == float else float(s[1:]) for s in df['street']]
+
+    df['floor'] = np.where(pd.to_numeric(df['floor'], errors='coerce').isnull().to_numpy(), 
+                           -1.0,  #замена непонятных этажей на -1
+                           df['floor'].to_numpy())
 
     df_moscow = df[df['region'] == reg_dict['Москва']]
     df_peter =  df[df['region'] == reg_dict['Санкт-Петербург']]
